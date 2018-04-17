@@ -1,0 +1,99 @@
+<% include ../partials/header %>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<p class="lead">YelpCamp</p>
+				<div class="list-group">
+					<li class="list-group-item">Info 1</li>
+					<li class="list-group-item active">Info 2</li>
+					<li class="list-group-item">Info 3</li>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+
+				<div class="card">
+					<img class="card-img-top" src="<%= campground.image %>" alt="Card image cap">
+					<div class="card-body">
+						<strong class="card-title">
+							<a href="">
+								<%= campground.name %>
+							</a>
+						</strong>
+						<span class="float-right">€9.00/night</span>
+						<p class="card-text">
+							<%= campground.description %>
+						</p>
+						<p>
+							<% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+								<a href="/campgrounds/<%= campground._id %>/edit" class="float-left btn btn-outline-warning btn-sm">
+									✎ Edit Campground
+								</a>
+								<form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+									<button class="btn btn-outline-danger btn-sm">🗑 Delete</button>
+								</form>
+								<% } %>
+									<span class="float-right">
+										<em>Submitted By
+											<%= campground.author.username %>
+										</em>
+									</span>
+						</p>
+					</div>
+				</div>
+
+				<div class="card" style="margin-top:1rem">
+					<div class="card-header" style="border-bottom:red">
+						Reviews
+						<a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-outline-primary float-right">
+							+ Add a Review
+						</a>
+					</div>
+
+					<ul class="list-group list-group-flush">
+						<% campground.comments.forEach(function(comment){ %>
+							<li class="list-group-item">
+								<blockquote class="blockquote mb-0">
+									<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+										<form class="float-right" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
+											<button class="btn btn-outline-danger btn-sm">🗑</button>
+										</form>
+										<% } %>
+											<p>★★★★☆
+												<%= comment.text %>
+													<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+														<span class="float-right">
+															<a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-outline-warning btn-sm">
+																✎
+															</a>
+														</span>
+														<% } %>
+											</p>
+											<footer class="blockquote-footer">
+												<%= comment.author.username %>
+													<span class="float-right">10 days ago</span>
+											</footer>
+								</blockquote>
+							</li>
+							<% }) %>
+					</ul>
+
+					<!-- <div class="card-footer" style="border-top:red">
+						<a href="/campgrounds/<%= campground._id %>/comments/new">
+							<button type="button" class="btn btn-outline-primary float-right">
+								Add a Review
+							</button>
+						</a>
+				</div> -->
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<% include ../partials/footer %>

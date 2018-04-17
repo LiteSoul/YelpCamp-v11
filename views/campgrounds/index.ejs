@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<div class="container" style="padding-bottom:100px">
+	
+	<header class="jumbotron" style="background-color: #92C4C3">
+		<div class="container">
+			<h1>Litoral Campgrounds</h1>
+			<p>From Córdoba to Entre Rios, these sights are full of lush vegetation and small water banks</p>
+			<a class="btn btn-success" href="/campgrounds/new">Add a Campground</a>
+		</div>
+	</header>
+
+	<div class="card-deck">
+		<% campgrounds.forEach(function(campground){ %>
+			<a class="card" href="/campgrounds/<%= campground._id %>">
+				<img class="card-img-top" src="<%= campground.image %>" alt="Card image cap">
+				<div class="card-body">
+					<h4 class="card-title"><%= campground.name %></h4>
+				</div>
+			</a>
+		<% }) %>
+	</div>
+
+</div>
+
+<% include ../partials/footer %>
