@@ -58,6 +58,8 @@ passport.deserializeUser(User.deserializeUser())
 //creates middleware to pass user data (check if logged in) for EVERY route
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user
+	//Access flash message
+	res.locals.message = req.flash('error')
 	next()
 })
 

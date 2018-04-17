@@ -47,7 +47,7 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-	res.render('auth/login', { message: req.flash('error') })
+	res.render('auth/login')
 })
 
 //app.post(login route, middleware, callback)
@@ -62,6 +62,7 @@ router.post(
 
 router.get('/logout', (req, res) => {
 	req.logout() //this method comes with the pkg we installed
+	req.flash('error', 'You have successfully logged out')
 	res.redirect('/campgrounds')
 })
 
