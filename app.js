@@ -13,6 +13,7 @@ const seedDB = require('./seeds')
 //seedDB() //Seed the DataBase
 //for user authentication
 const passport = require('passport')
+const flash = require('connect-flash')
 const LocalStrategy = require('passport-local')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -46,6 +47,7 @@ app.use(
 )
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(flash())
 //use localstrategy and give it a method (User.authenticate)from local-mongoose plugin
 passport.use(new LocalStrategy(User.authenticate()))
 // use static serialize and deserialize of model for passport session support

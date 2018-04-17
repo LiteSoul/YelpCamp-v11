@@ -47,7 +47,7 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-	res.render('auth/login')
+	res.render('auth/login', { message: req.flash('error') })
 })
 
 //app.post(login route, middleware, callback)
