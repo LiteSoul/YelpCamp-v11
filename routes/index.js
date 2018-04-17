@@ -37,7 +37,6 @@ router.post('/signup', (req, res) => {
 	let newUser = new User({ username: req.body.username })
 	User.register(newUser, req.body.password, (err, user) => {
 		if (err) {
-			console.log(err)
 			return res.render('auth/signup')
 		}
 		passport.authenticate('local')(req, res, () => {
@@ -62,7 +61,7 @@ router.post(
 
 router.get('/logout', (req, res) => {
 	req.logout() //this method comes with the pkg we installed
-	req.flash('error', 'You have successfully logged out')
+	req.flash('success', 'You have successfully logged out')
 	res.redirect('/campgrounds')
 })
 

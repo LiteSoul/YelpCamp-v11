@@ -8,7 +8,7 @@ middlewareObj.isLoggedIn = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		return next()
 	}
-	req.flash('error', 'You are not loggedin it, please login first')
+	req.flash('error', 'You are not logged in, please login first')
 	res.redirect('/login')
 }
 
@@ -16,16 +16,24 @@ middlewareObj.isLoggedIn = (req, res, next) => {
 middlewareObj.checkCampOwnership = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		Campground.findById(req.params.id, (err, foundCamp) => {
-			if (err) res.redirect('back')
-			else {
+			if (err) {
+				req.flash('error', 'Campground not found or DB error')
+				res.redirect('back')
+			} else {
 				//	//does user own campground?
 				//mongoose stores authorid as an mongoose object, not string so to compare them
 				// we use mongoose method equals()
 				if (foundCamp.author.id.equals(req.user._id)) next()
-				else res.redirect('back')
+				else {
+					req.flash('error', 'You do not have permission to do that')
+					res.redirect('back')
+				}
 			}
 		})
-	} else res.redirect('back') //takes the user to the 'previous' page
+	} else {
+		req.flash('error', 'Secret page! You need to be logged in to do that ;)')
+		res.redirect('back')
+	} //takes the user to the 'previous' page
 }
 
 middlewareObj.checkCommentOwnership = (req, res, next) => {

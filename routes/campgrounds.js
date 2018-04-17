@@ -22,9 +22,8 @@ router.post('/campgrounds', middleware.isLoggedIn, (req, res) => {
 	}
 	//Create a new campground and save it to DB:
 	Campground.create(newCampground, (err, new_camp) => {
-		if (err) {
-			console.log(err)
-		} else {
+		if (err) console.log(err)
+		else {
 			console.log(new_camp)
 			// redirect back to campgrounds, default is GET campgrounds:
 			res.redirect('/campgrounds')
@@ -47,13 +46,10 @@ router.get('/campgrounds/:id', (req, res) => {
 	Campground.findById(req.params.id)
 		.populate('comments')
 		.exec(function(err, foundCamp) {
-			if (err) {
-				console.log(err)
-			} else {
+			if (err) console.log(err)
+			else {
 				//render show template with that campground
-				res.render('campgrounds/show', {
-					campground: foundCamp
-				})
+				res.render('campgrounds/show', { campground: foundCamp })
 			}
 		})
 })
@@ -64,9 +60,7 @@ router.get(
 	middleware.checkCampOwnership,
 	(req, res) => {
 		Campground.findById(req.params.id, (err, foundCamp) => {
-			res.render('campgrounds/edit', {
-				campground: foundCamp
-			})
+			res.render('campgrounds/edit', { campground: foundCamp })
 		})
 	}
 )
