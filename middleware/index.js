@@ -42,10 +42,16 @@ middlewareObj.checkCommentOwnership = (req, res, next) => {
 			if (err) res.redirect('back')
 			else {
 				if (foundComment.author.id.equals(req.user._id)) next()
-				else res.redirect('back')
+				else {
+					req.flash('error', 'You do not have permission to do that')
+					res.redirect('back')
+				}
 			}
 		})
-	} else res.redirect('back')
+	} else {
+		req.flash('error', 'Secret page! You need to be logged in to do that ;)')
+		res.redirect('back')
+	}
 }
 
 module.exports = middlewareObj

@@ -18,7 +18,7 @@ router.get('/campgrounds', (req, res) => {
 	//get all (all is {}) campgrounds from db:
 	Campground.find({}, (err, all_campings) => {
 		if (err) {
-			console.log(err)
+			req.flash('error', `Campgrounds not found or DB error. ${err.message}`)
 		} else {
 			//render it:
 			res.render('campgrounds/index', {
@@ -37,9 +37,11 @@ router.post('/signup', (req, res) => {
 	let newUser = new User({ username: req.body.username })
 	User.register(newUser, req.body.password, (err, user) => {
 		if (err) {
+			req.flash('error', err.message)
 			return res.render('auth/signup')
 		}
 		passport.authenticate('local')(req, res, () => {
+			req.flash('success', `Welcome to YelpCamp, ${user.username}`)
 			res.redirect('/campgrounds')
 		})
 	})

@@ -37,7 +37,6 @@ router.post('/campgrounds/:id/comments', middleware.isLoggedIn, (req, res) => {
 			//we just use comment[array] sent from new.ejs
 			Comment.create(req.body.comment, (err, new_comm) => {
 				if (err) {
-					console.log(err)
 					req.flash('error', 'Something went wrong')
 				} else {
 					//add username and id to comment
@@ -48,6 +47,7 @@ router.post('/campgrounds/:id/comments', middleware.isLoggedIn, (req, res) => {
 					//push it into the comments
 					foundCamp.comments.push(new_comm)
 					foundCamp.save()
+					req.flash('success', 'Comment successfully added')
 					// redirect back to campground, default is GET campground:
 					res.redirect('/campgrounds/' + foundCamp._id)
 				}
@@ -92,6 +92,7 @@ router.delete(
 	(req, res) => {
 		// res.send('YOU ARE TRYING TO ERASE ME!!! :()')
 		Comment.findByIdAndRemove(req.params.comment_id, (err, deletedComment) => {
+			req.flash('success', 'Comment deleted')
 			res.redirect(`/campgrounds/${req.params.id}`)
 		})
 	}
