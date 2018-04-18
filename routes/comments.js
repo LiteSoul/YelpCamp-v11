@@ -38,6 +38,7 @@ router.post('/campgrounds/:id/comments', middleware.isLoggedIn, (req, res) => {
 			Comment.create(req.body.comment, (err, new_comm) => {
 				if (err) {
 					console.log(err)
+					req.flash('error', 'Something went wrong')
 				} else {
 					//add username and id to comment
 					new_comm.author.id = req.user._id
