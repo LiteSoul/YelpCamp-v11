@@ -11,7 +11,7 @@ const passport = require('passport')
 router.get('/', function(req, res) {
 	res.render('landing')
 })
-//FIRST USE OF A FAT ARROW YAY!!
+//FIRST USE OF A FAT ARROW YAY!!=>
 //INDEX route - show all campgrounds
 router.get('/campgrounds', (req, res) => {
 	//console.log(req.user) to check for user loggedin data or undefined
