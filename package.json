@@ -1,6 +1,6 @@
 {
 	"name": "yelpcamp-v11",
-	"version": "11.0",
+	"version": "1.11",
 	"description": "It's a mix of Yelp and campgrounds",
 	"main": "app.js",
 	"scripts": {
