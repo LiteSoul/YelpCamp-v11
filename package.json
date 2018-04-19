@@ -1,15 +1,11 @@
 {
 	"name": "yelpcamp-v11",
-	"version": "1.11",
+	"version": "1.0",
 	"description": "It's a mix of Yelp and campgrounds",
 	"main": "app.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node app.js"
-	},
-	"engines": {
-		"npm": "^5.7.1",
-		"node": "^9.7.1"
 	},
 	"repository": "https://github.com/LiteSoul/YelpCamp-v11.git",
 	"author": "Ariel Blasi <exorcismo@gmail.com>",
