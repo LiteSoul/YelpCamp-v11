@@ -21,16 +21,16 @@
 		"express": "^4.15.5",
 		"express-session": "^1.15.5",
 		"method-override": "^2.3.10",
-		"mongoose": "^4.13.12",
+		"mongoose": "^4.11.3",
 		"passport": "^0.4.0",
 		"passport-local": "^1.0.0",
-		"passport-local-mongoose": "^4.5.0"
+		"passport-local-mongoose": "^4.2.1"
 	},
 	"devDependencies": {
-		"eslint": "^4.18.0",
+		"eslint": "^4.7.2",
 		"eslint-plugin-html": "^3.2.2",
 		"eslint-config-prettier": "^2.6.0",
 		"eslint-plugin-prettier": "^2.3.1",
-		"prettier": "^1.10.2"
+		"prettier": "^1.7.2"
 	}
 }
