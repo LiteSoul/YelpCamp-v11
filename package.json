@@ -1,36 +1,40 @@
 {
-	"name": "yelpcamp-v11",
-	"version": "1.0.0",
-	"description": "It's a mix of Yelp and campgrounds",
-	"main": "app.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node app.js"
-	},
-	"repository": "https://github.com/LiteSoul/YelpCamp-v11.git",
-	"author": "Ariel Blasi <exorcismo@gmail.com>",
-	"license": "MIT",
-	"dependencies": {
-		"body-parser": "^1.17.2",
-		"connect-flash": "^0.1.1",
-		"ejs": "^2.5.6",
-		"express": "^4.15.5",
-		"express-session": "^1.15.5",
-		"method-override": "^2.3.10",
-		"mongoose": "^4.11.3",
-		"passport": "^0.4.0",
-		"passport-local": "^1.0.0",
-		"passport-local-mongoose": "^4.2.1"
-	},
-	"devDependencies": {
-		"eslint": "^4.7.2",
-		"eslint-plugin-html": "^3.2.2",
-		"eslint-config-prettier": "^2.6.0",
-		"eslint-plugin-prettier": "^2.3.1",
-		"prettier": "^1.7.2"
-	},
-	"engines": {
-		"npm": "5.8.0",
-		"node": "9.11.1"
-	}
+  "name": "yelpcamp-v11",
+  "version": "1.0.0",
+  "description": "It's a mix of Yelp and campgrounds",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "repository": "https://github.com/LiteSoul/YelpCamp-v11.git",
+  "author": "Ariel Blasi <exorcismo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.5",
+    "express-session": "^1.15.5",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.11.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.2.1",
+    "snyk": "^1.316.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.7.2"
+  },
+  "engines": {
+    "npm": "5.8.0",
+    "node": "9.11.1"
+  },
+  "snyk": true
 }
